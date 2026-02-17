@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Plan Your Stay</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #e9dfcf;
+        }
+
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1150px;
+            display: flex;
+            gap: 70px;
+        }
+
+        /* FORM PANEL */
+        .form-panel {
+            flex: 1;
+            background: #f4efe6;
+            padding: 40px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin: 0 0 12px;
+        }
+
+        .subtitle {
+            font-size: 15px;
+            color: #6b5a45;
+            margin-bottom: 30px;
+        }
+
+        /* ✅ Larger Labels */
+        label {
+            font-size: 14px;
+            color: #6b5a45;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        /* ✅ Inputs */
+        input,
+        select {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #b8a58a;
+            padding: 10px 2px;
+            margin-bottom: 22px;
+            font-size: 15px;
+            background: transparent;
+            color: #2b2b2b;
+
+            /* ✅ Remove Default Blue Styling */
+            outline: none;
+            box-shadow: none;
+        }
+
+        /* ✅ Elegant Vintage Focus */
+        input:focus,
+        select:focus {
+            outline: none;
+            box-shadow: none;
+            border-bottom-color: #8b6b47;
+        }
+
+        /* Layout Rows */
+        .row {
+            display: flex;
+            gap: 16px;
+        }
+
+        .row div {
+            flex: 1;
+        }
+
+        button {
+            width: 100%;
+            background: #8b6b47;
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 10px;
+            letter-spacing: 0.3px;
+        }
+
+        button:hover {
+            background: #735537;
+        }
+
+        .note {
+            font-size: 13px;
+            text-align: center;
+            margin-top: 12px;
+            color: #7c6a55;
+        }
+
+        /* RIGHT PANEL */
+        .info-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .info-block {
+            margin-bottom: 36px;
+        }
+
+        .info-block h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: #8b6b47;
+            margin-bottom: 6px;
+        }
+
+        .info-block p {
+            font-size: 15px;
+            color: #6b5a45;
+            margin: 4px 0;
+        }
+
+        .highlight {
+            font-weight: 500;
+            font-size: 16px;
+            color: #2b2b2b;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="section">
+        <div class="container">
+
+            <!-- FORM -->
+            <div class="form-panel">
+
+                <h2>Plan Your Stay</h2>
+                <div class="subtitle">
+                    Share your preferred dates and stay details.
+                </div>
+
+                <form action="YOUR_SALESFORCE_URL" method="POST">
+
+                    <input type="hidden" name="oid" value="YOUR_ORG_ID">
+                    <input type="hidden" name="retURL" value="https://yourwebsite.com/thank-you">
+
+                    <!-- <label>Guest Name</label>
+                <input type="text" name="last_name" required> -->
+                    <div class="row">
+                        <div>
+                            <label>First Name</label>
+                            <input type="text" name="first_name" required>
+                        </div>
+                        <div>
+                            <label>Last Name</label>
+                            <input type="text" name="last_name" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div>
+                            <label>Check-in</label>
+                            <input type="date" name="00NXXXXCHECKIN">
+                        </div>
+                        <div>
+                            <label>Check-out</label>
+                            <input type="date" name="00NXXXXCHECKOUT">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div>
+                            <label>Adults</label>
+                            <select name="00NXXXXADULTS">
+                                <option value="">Select</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4+</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Children</label>
+                            <select name="00NXXXXCHILDREN">
+                                <option value="">Select</option>
+                                <option>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3+</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <label>Stay Preference</label>
+                    <select name="00NXXXXSTAYTYPE">
+                        <option value="">Select Preference</option>
+                        <option>Luxury Tent</option>
+                        <option>Suite / Cottage</option>
+                        <option>Family Experience</option>
+                        <option>Flexible Dates</option>
+                    </select>
+
+                    <label>Mobile Number</label>
+                    <input type="tel" name="phone" required>
+
+                    <label>Email Address</label>
+                    <input type="email" name="email" required>
+
+                    <button type="submit">Check Availability</button>
+
+                    <div class="note">
+                        Quick response • No payment required
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- RIGHT INFO -->
+            <div class="info-panel">
+
+                <div class="info-block">
+                    <h3>Reservations</h3>
+                    <p>For availability & stay assistance.</p>
+                    <div class="highlight">info@yourwebsite.com</div>
+                    <div class="highlight">+91 XXX XXX XXXX</div>
+                </div>
+
+                <div class="info-block">
+                    <h3>Events & Groups</h3>
+                    <p>Retreats & curated gatherings.</p>
+                    <div class="highlight">events@yourwebsite.com</div>
+                </div>
+
+                <div class="info-block">
+                    <h3>Travel Partners</h3>
+                    <p>Agent & collaboration enquiries.</p>
+                    <div class="highlight">partners@yourwebsite.com</div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
