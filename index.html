@@ -180,39 +180,42 @@
                     Share your preferred dates and stay details.
                 </div>
 
-                <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DgL00000L1caD" method="POST">
+                <form
+                    action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DgL00000L1caD"
+                    method="POST">
 
                     <input type=hidden name="oid" value="00DgL00000L1caD">
                     <input type=hidden name="retURL" value="https://mvclouds.com/">
 
-                    <!-- <label>Guest Name</label>
-                <input type="text" name="last_name" required> -->
                     <div class="row">
                         <div>
-                            <label>First Name</label>
-                            <input type="text" name="first_name" required>
+                            <label for="first_name">First Name</label>
+                            <input id="first_name" maxlength="40" name="first_name" size="20" type="text" required />
                         </div>
                         <div>
-                            <label>Last Name</label>
-                            <input type="text" name="last_name" required>
+                            <label for="last_name">Last Name</label>
+                            <input id="last_name" maxlength="80" name="last_name" size="20" type="text" required />
                         </div>
                     </div>
 
                     <div class="row">
                         <div>
                             <label>Check-in</label>
-                            <input type="date" name="00NXXXXCHECKIN">
+                            <input type="date" id="checkin">
+                            <input type="hidden" name="00NgL00003DeyKd" id="checkin_sf">
                         </div>
+
                         <div>
                             <label>Check-out</label>
-                            <input type="date" name="00NXXXXCHECKOUT">
+                            <input type="date" id="checkout">
+                            <input type="hidden" name="00NgL00003Df80c" id="checkout_sf">
                         </div>
                     </div>
 
                     <div class="row">
                         <div>
                             <label>Adults</label>
-                            <select name="00NXXXXADULTS">
+                            <select id="00NgL00003Df8S2" name="00NgL00003Df8S2">
                                 <option value="">Select</option>
                                 <option>1</option>
                                 <option>2</option>
@@ -222,7 +225,7 @@
                         </div>
                         <div>
                             <label>Children</label>
-                            <select name="00NXXXXCHILDREN">
+                            <select id="00NgL00003DeP7e" name="00NgL00003DeP7e">
                                 <option value="">Select</option>
                                 <option>0</option>
                                 <option>1</option>
@@ -233,7 +236,7 @@
                     </div>
 
                     <label>Stay Preference</label>
-                    <select name="00NXXXXSTAYTYPE">
+                    <select id="00NgL00003Df8jl" name="00NgL00003Df8jl">
                         <option value="">Select Preference</option>
                         <option>Luxury Tent</option>
                         <option>Suite / Cottage</option>
@@ -241,11 +244,11 @@
                         <option>Flexible Dates</option>
                     </select>
 
-                    <label>Mobile Number</label>
-                    <input type="tel" name="phone" required>
+                    <label for="mobile">Mobile</label>
+                    <input id="mobile" maxlength="40" name="mobile" size="20" type="text" />
 
-                    <label>Email Address</label>
-                    <input type="email" name="email" required>
+                    <label for="email">Email</label>
+                    <input id="email" maxlength="80" name="email" size="20" type="text" required />
 
                     <button type="submit">Check Availability</button>
 
@@ -279,10 +282,15 @@
                 </div>
 
             </div>
-
         </div>
     </div>
 </body>
+<script>
+    document.querySelector("form").onsubmit = () => {
+        const f = d => d ? d.split("-").slice(1).join("/") + "/" + d.split("-")[0] : "";
+        checkin_sf.value = f(checkin.value);
+        checkout_sf.value = f(checkout.value);
+    };
+</script>
+
 </html>
-
-
