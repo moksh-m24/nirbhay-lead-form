@@ -284,13 +284,12 @@
             </div>
         </div>
     </div>
+    <script>
+        document.querySelector("form").onsubmit = () => {
+            const f = d => d ? d.split("-").slice(1).join("/") + "/" + d.split("-")[0] : "";
+            checkin_sf.value = f(checkin.value);
+            checkout_sf.value = f(checkout.value);
+        };
+    </script>
 </body>
-<script>
-    document.querySelector("form").onsubmit = () => {
-        const f = d => d ? d.split("-").slice(1).join("/") + "/" + d.split("-")[0] : "";
-        checkin_sf.value = f(checkin.value);
-        checkout_sf.value = f(checkout.value);
-    };
-</script>
-
 </html>
